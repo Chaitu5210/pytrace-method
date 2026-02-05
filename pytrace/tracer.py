@@ -1,6 +1,7 @@
 import sys
 import inspect
 
+# -------- NODE ----------
 class Node:
     def __init__(self, name, params):
         self.name = name
@@ -8,15 +9,21 @@ class Node:
         self.return_val = None
         self.children = []
 
+
+# -------- TRACER ----------
 class CallTracer:
     def __init__(self):
         self.call_stack = []
         self.root = None
+        self.enabled = False
 
     def tracer(self, frame, event, arg):
+        if not self.enabled:
+            return
+
         func_name = frame.f_code.co_name
 
-        # ignore internal python calls
+        # ignore internal/system calls
         if func_name.startswith("<"):
             return self.tracer
 
@@ -40,16 +47,26 @@ class CallTracer:
 
         return self.tracer
 
+    # -------- START ----------
     def start(self):
+        self.enabled = True
         sys.settrace(self.tracer)
 
-    def stop(self):
+    # -------- END ----------
+    def end(self):
         sys.settrace(None)
+        self.enabled = False
+        self.print_tree()
 
+    # -------- PRINT ----------
     def print_tree(self, node=None, indent=0):
         if node is None:
             node = self.root
             print("\nCALL TRACE:\n")
+
+        if node is None:
+            print("No calls traced.")
+            return
 
         space = "  " * indent
         param_str = ", ".join(f"{k}={v}" for k,v in node.params.items())
@@ -59,13 +76,5 @@ class CallTracer:
             self.print_tree(child, indent+1)
 
 
-# -------- context manager ----------
-class trace:
-    def __enter__(self):
-        self.t = CallTracer()
-        self.t.start()
-        return self.t
-
-    def __exit__(self, exc_type, exc, tb):
-        self.t.stop()
-        self.t.print_tree()
+# -------- GLOBAL INSTANCE ----------
+trace = CallTracer()
