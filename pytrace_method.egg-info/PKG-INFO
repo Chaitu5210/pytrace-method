@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: pytrace-method
-Version: 0.0.1
+Version: 0.0.2
 Summary: Simple Python call tracing library with hierarchy view
 Author-email: Chaitanya <chaitanyarudraraju5210@gmail.com>
 License: MIT
