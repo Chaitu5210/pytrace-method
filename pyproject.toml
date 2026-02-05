@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytrace-method"
+version = "0.0.1"
+description = "Simple Python call tracing library with hierarchy view"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+  { name="Chaitanya", email="chaitanyarudraraju5210@gmail.com" }
+]
+license = { text = "MIT" }
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Chaitu5210/pytrace-method"
+Repository = "https://github.com/Chaitu5210/pytrace-method"
+Issues = "https://github.com/Chaitu5210/pytrace-method/issues"
