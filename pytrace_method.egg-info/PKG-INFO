@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: pytrace-method
+Version: 0.0.1
+Summary: Simple Python call tracing library with hierarchy view
+Author-email: Chaitanya <chaitanyarudraraju5210@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/Chaitu5210/pytrace-method
+Project-URL: Repository, https://github.com/Chaitu5210/pytrace-method
+Project-URL: Issues, https://github.com/Chaitu5210/pytrace-method/issues
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+# pytrace-method
+a python tracer to trace methods
