@@ -1,7 +1,7 @@
 import sys
 import inspect
 
-# -------- NODE ----------
+# ---------- NODE ----------
 class Node:
     def __init__(self, name, params):
         self.name = name
@@ -10,7 +10,7 @@ class Node:
         self.children = []
 
 
-# -------- TRACER ----------
+# ---------- TRACER ----------
 class CallTracer:
     def __init__(self):
         self.call_stack = []
@@ -22,11 +22,17 @@ class CallTracer:
             return
 
         func_name = frame.f_code.co_name
+        module_name = frame.f_globals.get("__name__", "")
 
-        # ignore internal/system calls
+        # 🚫 ignore tracer internal calls
+        if module_name.startswith("pytrace"):
+            return self.tracer
+
+        # 🚫 ignore system calls like <listcomp>
         if func_name.startswith("<"):
             return self.tracer
 
+        # ---------- FUNCTION CALL ----------
         if event == "call":
             arg_info = inspect.getargvalues(frame)
             params = {a: arg_info.locals[a] for a in arg_info.args}
@@ -40,6 +46,7 @@ class CallTracer:
 
             self.call_stack.append(node)
 
+        # ---------- FUNCTION RETURN ----------
         elif event == "return":
             if self.call_stack:
                 node = self.call_stack.pop()
@@ -47,18 +54,20 @@ class CallTracer:
 
         return self.tracer
 
-    # -------- START ----------
+    # ---------- START ----------
     def start(self):
+        self.call_stack = []
+        self.root = None
         self.enabled = True
         sys.settrace(self.tracer)
 
-    # -------- END ----------
+    # ---------- END ----------
     def end(self):
-        sys.settrace(None)
+        sys.settrace(None)   # stop tracing first
         self.enabled = False
         self.print_tree()
 
-    # -------- PRINT ----------
+    # ---------- PRINT TREE ----------
     def print_tree(self, node=None, indent=0):
         if node is None:
             node = self.root
@@ -69,12 +78,12 @@ class CallTracer:
             return
 
         space = "  " * indent
-        param_str = ", ".join(f"{k}={v}" for k,v in node.params.items())
+        param_str = ", ".join(f"{k}={v}" for k, v in node.params.items())
         print(f"{space}{node.name}({param_str}) -> {node.return_val}")
 
         for child in node.children:
-            self.print_tree(child, indent+1)
+            self.print_tree(child, indent + 1)
 
 
-# -------- GLOBAL INSTANCE ----------
+# ---------- GLOBAL INSTANCE ----------
 trace = CallTracer()
