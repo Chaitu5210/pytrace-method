@@ -13,12 +13,12 @@ and teaching how programs run internally.
 
 ## ✨ Features
 
--   📌 Trace function & method calls automatically\
--   📥 Capture parameters passed to functions\
--   📤 Capture return values\
--   🧠 Understand nested and object method calls\
--   🌐 Generate interactive HTML call reports\
--   ⚡ Minimal setup, easy integration\
+-   📌 Trace function & method calls automatically
+-   📥 Capture parameters passed to functions
+-   📤 Capture return values
+-   🧠 Understand nested and object method calls
+-   🌐 Generate interactive HTML call reports
+-   ⚡ Minimal setup, easy integration
 -   🪶 Lightweight with no heavy dependencies
 
 ------------------------------------------------------------------------
@@ -81,9 +81,9 @@ process_user(u)
 trace.end()
 ```
 
-The generated HTML will show: - Function call hierarchy\
-- Object method calls\
-- Parameters passed\
+The generated HTML will show: - Function call hierarchy
+- Object method calls
+- Parameters passed
 - Return values
 
 ------------------------------------------------------------------------
@@ -92,14 +92,14 @@ The generated HTML will show: - Function call hierarchy\
 
 The HTML report includes:
 
--   Structured call trace\
--   Nested call visualization\
--   Parameters and return values\
+-   Structured call trace
+-   Nested call visualization
+-   Parameters and return values
 -   Clean readable format
 
-Great for: - Debugging large systems\
-- Understanding legacy code\
-- Teaching programming flow\
+Great for: - Debugging large systems
+- Understanding legacy code
+- Teaching programming flow
 - Interview preparation
 
 ------------------------------------------------------------------------
@@ -108,10 +108,10 @@ Great for: - Debugging large systems\
 
 `pytrace-method` hooks into Python execution and logs:
 
--   Function calls\
--   Method calls\
--   Arguments\
--   Return values\
+-   Function calls
+-   Method calls
+-   Arguments
+-   Return values
 -   Call hierarchy
 
 It then generates a readable interactive HTML trace file.
@@ -120,10 +120,10 @@ It then generates a readable interactive HTML trace file.
 
 ## 💡 Use Cases
 
--   Debug complex nested calls\
--   Visualize execution flow\
--   Teaching Python internals\
--   Performance understanding\
+-   Debug complex nested calls
+-   Visualize execution flow
+-   Teaching Python internals
+-   Performance understanding
 -   Code auditing
 
 ------------------------------------------------------------------------
@@ -132,9 +132,9 @@ It then generates a readable interactive HTML trace file.
 
 Contributions are welcome!
 
-1.  Fork the repo\
-2.  Create your feature branch\
-3.  Commit changes\
+1.  Fork the repo
+2.  Create your feature branch
+3.  Commit changes
 4.  Push and open PR
 
 ------------------------------------------------------------------------
@@ -157,9 +157,12 @@ MIT License
 
 If this project helps you:
 
--   ⭐ Star the repo\
--   🐛 Report issues\
--   💡 Suggest features\
+-   ⭐ Star the repo
+-   🐛 Report issues
+-   💡 Suggest features
 -   🤝 Contribute
-
+  
 Happy Debugging 🚀
+
+
+If you're interested in collaborating on new projects or need any assistance, feel free to reach out at chaitanyarudraraju5210@gmail.com.
